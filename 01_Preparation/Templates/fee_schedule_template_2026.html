@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S+Y Studio 2026 Fee Schedule Template</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; background: #f5f7fb; color: #1f2937; margin: 0; padding: 24px; }
+    .page { max-width: 1200px; margin: 0 auto; background: white; border: 1px solid #d1d5db; border-radius: 10px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    h1, h2, h3 { color: #0f172a; }
+    .section { margin-top: 20px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; background: #fcfdff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { border: 1px solid #e5e7eb; padding: 10px; text-align: left; }
+    th { background: #f3f4f6; }
+    .muted { color: #6b7280; font-size: 0.95em; }
+    .pill { display: inline-block; background: #ecfeff; color: #0f766e; border: 1px solid #99f6e4; padding: 4px 8px; border-radius: 999px; font-size: 0.9em; margin-right: 6px; margin-top: 6px; }
+    .calc { background: #fef3c7; border: 1px solid #f59e0b; padding: 12px; border-radius: 8px; margin-top: 10px; }
+    input, textarea { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; background: white; }
+    button { background: #0f766e; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+    button.secondary { background: #475569; margin-left: 8px; }
+    button.remove-btn { background: #b91c1c; margin-top: 0; }
+    .inline-actions { margin-top: 10px; }
+    .custom-item-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 8px; margin-top: 8px; align-items: center; }
+    .hour-layout { display: grid; grid-template-columns: 280px 1fr; gap: 18px; align-items: start; }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .legend-swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    #feeChart { max-width: 260px; width: 100%; height: auto; }
+    .sheet-fee { font-weight: 600; color: #0f766e; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>S+Y Studio 2026 Fee Schedule Template</h1>
+    <p class="muted">Edit values below, then export them as JSON or import from an existing JSON file.</p>
+
+    <div class="section">
+      <h2>Project Settings</h2>
+      <label>Project Name</label><br>
+      <input id="projectName" value="[Project Name]" /><br><br>
+      <label>Project Type</label><br>
+      <input id="projectType" value="[New Build / TI / Change of Use / As-Built]" /><br><br>
+      <label>Base Hourly Rate</label><br>
+      <input id="hourlyRate" type="number" value="175" /><br><br>
+      <label>Square Foot Rate</label><br>
+      <input id="sfRate" type="number" value="5.2" /><br><br>
+      <label>Estimated Square Footage</label><br>
+      <input id="sf" type="number" value="1800" />
+    </div>
+
+    <div class="section">
+      <h2>Project Scope of Work</h2>
+      <p class="muted">Write or paste the project scope manually here for use in the proposal body.</p>
+      <textarea id="manualScope" rows="8" placeholder="Describe the scope of work, deliverables, and assumptions..."></textarea>
+    </div>
+
+    <div class="section">
+      <h2>1. Hour-Based Estimate</h2>
+      <div class="hour-layout">
+        <div>
+          <canvas id="feeChart" width="260" height="260"></canvas>
+          <div id="chartLegend"></div>
+        </div>
+        <div>
+          <table>
+            <tr><th>Task Type</th><th>Hours</th><th>Rate</th><th>Fee</th></tr>
+            <tr><td>Project intake</td><td><input class="taskHours" data-key="project_intake" value="4" /></td><td><input class="taskRate" data-key="project_intake_rate" value="175" /></td><td><span class="taskFee" data-key="project_intake"></span></td></tr>
+            <tr><td>As-built / existing conditions</td><td><input class="taskHours" data-key="as_built" value="6" /></td><td><input class="taskRate" data-key="as_built_rate" value="175" /></td><td><span class="taskFee" data-key="as_built"></span></td></tr>
+            <tr><td>Site evaluation / field verification</td><td><input class="taskHours" data-key="site_eval" value="4" /></td><td><input class="taskRate" data-key="site_eval_rate" value="175" /></td><td><span class="taskFee" data-key="site_eval"></span></td></tr>
+            <tr><td>Concept / schematic design</td><td><input class="taskHours" data-key="schematic" value="10" /></td><td><input class="taskRate" data-key="schematic_rate" value="175" /></td><td><span class="taskFee" data-key="schematic"></span></td></tr>
+            <tr><td>Design development</td><td><input class="taskHours" data-key="design_dev" value="12" /></td><td><input class="taskRate" data-key="design_dev_rate" value="175" /></td><td><span class="taskFee" data-key="design_dev"></span></td></tr>
+            <tr><td>Construction documents / permit drawings</td><td><input class="taskHours" data-key="cds" value="20" /></td><td><input class="taskRate" data-key="cds_rate" value="175" /></td><td><span class="taskFee" data-key="cds"></span></td></tr>
+            <tr><td>Plan check / permitting support</td><td><input class="taskHours" data-key="permit" value="8" /></td><td><input class="taskRate" data-key="permit_rate" value="175" /></td><td><span class="taskFee" data-key="permit"></span></td></tr>
+          </table>
+          <div class="inline-actions">
+            <button type="button" onclick="addCustomLineItem()">Add additional line item</button>
+          </div>
+          <div id="customHourItems"></div>
+          <div class="calc"><strong>Estimated total by hours:</strong> <span id="hourTotal">$0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2. Square Foot-Based Estimate</h2>
+      <div class="calc"><strong>Estimated total by square foot:</strong> <span id="sfTotal">$0</span></div>
+    </div>
+
+    <div class="section">
+      <h2>3. Scope-Based Estimate</h2>
+      <table>
+        <tr><th>Scope Package</th><th>Estimated Fee</th></tr>
+        <tr><td>Basic concept</td><td><input id="basicConcept" type="number" value="5000" /></td></tr>
+        <tr><td>Design development</td><td><input id="designDevelopment" type="number" value="12000" /></td></tr>
+        <tr><td>Permit drawings</td><td><input id="permitDrawings" type="number" value="18000" /></td></tr>
+        <tr><td>RTI / resubmittal support</td><td><input id="rtiSupport" type="number" value="6000" /></td></tr>
+      </table>
+      <div class="calc"><strong>Estimated total by scope:</strong> <span id="scopeTotal">$0</span></div>
+    </div>
+
+    <div class="section">
+      <h2>4. Sheet Estimate by Hour and Rate</h2>
+      <p class="muted">Use this method for standard architectural sheet-based scope such as site plans, floor plans, elevations, sections, and schedules.</p>
+      <table>
+        <tr><th>Sheet Type</th><th>Qty</th><th>Hours / Sheet</th><th>Rate / Hr</th><th>Estimated Fee</th></tr>
+        <tr class="sheet-estimate-row" data-key="site_plan"><td>Site plan</td><td><input class="sheet-qty" data-key="site_plan" value="1" /></td><td><input class="sheet-hours" data-key="site_plan" value="4" /></td><td><input class="sheet-rate" data-key="site_plan" value="175" /></td><td><span class="sheet-fee" data-key="site_plan"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="floor_plans"><td>Floor plans</td><td><input class="sheet-qty" data-key="floor_plans" value="2" /></td><td><input class="sheet-hours" data-key="floor_plans" value="5" /></td><td><input class="sheet-rate" data-key="floor_plans" value="175" /></td><td><span class="sheet-fee" data-key="floor_plans"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="elevations"><td>Elevations</td><td><input class="sheet-qty" data-key="elevations" value="2" /></td><td><input class="sheet-hours" data-key="elevations" value="4" /></td><td><input class="sheet-rate" data-key="elevations" value="175" /></td><td><span class="sheet-fee" data-key="elevations"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="sections"><td>Building sections</td><td><input class="sheet-qty" data-key="sections" value="1" /></td><td><input class="sheet-hours" data-key="sections" value="4" /></td><td><input class="sheet-rate" data-key="sections" value="175" /></td><td><span class="sheet-fee" data-key="sections"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="reflected_ceiling"><td>Reflected ceiling plans</td><td><input class="sheet-qty" data-key="reflected_ceiling" value="1" /></td><td><input class="sheet-hours" data-key="reflected_ceiling" value="3" /></td><td><input class="sheet-rate" data-key="reflected_ceiling" value="175" /></td><td><span class="sheet-fee" data-key="reflected_ceiling"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="interior_elevations"><td>Interior elevations</td><td><input class="sheet-qty" data-key="interior_elevations" value="1" /></td><td><input class="sheet-hours" data-key="interior_elevations" value="2" /></td><td><input class="sheet-rate" data-key="interior_elevations" value="175" /></td><td><span class="sheet-fee" data-key="interior_elevations"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="details"><td>Details and wall sections</td><td><input class="sheet-qty" data-key="details" value="2" /></td><td><input class="sheet-hours" data-key="details" value="3" /></td><td><input class="sheet-rate" data-key="details" value="175" /></td><td><span class="sheet-fee" data-key="details"></span></td></tr>
+        <tr class="sheet-estimate-row" data-key="schedules"><td>Door / window and room schedules</td><td><input class="sheet-qty" data-key="schedules" value="1" /></td><td><input class="sheet-hours" data-key="schedules" value="2" /></td><td><input class="sheet-rate" data-key="schedules" value="175" /></td><td><span class="sheet-fee" data-key="schedules"></span></td></tr>
+      </table>
+      <div class="calc"><strong>Estimated total by sheet hours:</strong> <span id="sheetEstimateTotal">$0</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Export / Import</h2>
+      <button type="button" onclick="exportToJson()">Export to JSON</button>
+      <button type="button" class="secondary" onclick="downloadJson()">Download JSON File</button>
+      <br><br>
+      <label>Import JSON</label><br>
+      <textarea id="jsonInput" rows="10" placeholder='{"project_name":"..."}'></textarea><br>
+      <button type="button" onclick="importFromJson()">Import JSON</button>
+      <br><br>
+      <label>Import project_intake.json file</label><br>
+      <input type="file" id="projectIntakeFile" accept="application/json" /><br>
+      <button type="button" onclick="importProjectIntakeFile()">Load file</button>
+      <div id="jsonOutput" class="calc" style="white-space: pre-wrap; font-family: monospace;"></div>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      project_name: 'S+Y Studio Project',
+      project_type: 'New Build / TI / Change of Use / As-Built',
+      hourly_rate: 150,
+      sf_rate: 4.5,
+      sf: 2000,
+      manual_scope: '',
+      custom_hourly_items: [],
+      sheet_estimate: {
+        site_plan: { qty: 1, hours: 4, rate: 175 },
+        floor_plans: { qty: 2, hours: 5, rate: 175 },
+        elevations: { qty: 2, hours: 4, rate: 175 },
+        sections: { qty: 1, hours: 4, rate: 175 },
+        reflected_ceiling: { qty: 1, hours: 3, rate: 175 },
+        interior_elevations: { qty: 1, hours: 2, rate: 175 },
+        details: { qty: 2, hours: 3, rate: 175 },
+        schedules: { qty: 1, hours: 2, rate: 175 }
+      },
+      tasks: {
+        project_intake: 4,
+        project_intake_rate: 150,
+        as_built: 6,
+        as_built_rate: 150,
+        site_eval: 4,
+        site_eval_rate: 150,
+        schematic: 10,
+        schematic_rate: 150,
+        design_dev: 12,
+        design_dev_rate: 150,
+        cds: 20,
+        cds_rate: 150,
+        permit: 8,
+        permit_rate: 150
+      },
+      scope: {
+        basic_concept: 5000,
+        design_development: 12000,
+        permit_drawings: 18000,
+        rti_support: 6000
+      }
+    };
+
+    function readCustomLineItems() {
+      return Array.from(document.querySelectorAll('.custom-line-row')).map((row) => ({
+        label: row.querySelector('.custom-label').value || 'Additional item',
+        hours: parseFloat(row.querySelector('.custom-hours').value || 0),
+        rate: parseFloat(row.querySelector('.custom-rate').value || 0)
+      })).filter((item) => item.label || item.hours || item.rate);
+    }
+
+    function updateAll() {
+      const hourlyRate = parseFloat(document.getElementById('hourlyRate').value || 0);
+      const sfRate = parseFloat(document.getElementById('sfRate').value || 0);
+      const sf = parseFloat(document.getElementById('sf').value || 0);
+      state.hourly_rate = hourlyRate;
+      state.sf_rate = sfRate;
+      state.sf = sf;
+      state.project_name = document.getElementById('projectName').value;
+      state.project_type = document.getElementById('projectType').value;
+      state.manual_scope = document.getElementById('manualScope').value;
+      state.custom_hourly_items = readCustomLineItems();
+      state.tasks.project_intake = parseFloat(document.querySelector('[data-key="project_intake"]').value || 0);
+      state.tasks.project_intake_rate = parseFloat(document.querySelector('[data-key="project_intake_rate"]').value || 0);
+      state.tasks.as_built = parseFloat(document.querySelector('[data-key="as_built"]').value || 0);
+      state.tasks.as_built_rate = parseFloat(document.querySelector('[data-key="as_built_rate"]').value || 0);
+      state.tasks.site_eval = parseFloat(document.querySelector('[data-key="site_eval"]').value || 0);
+      state.tasks.site_eval_rate = parseFloat(document.querySelector('[data-key="site_eval_rate"]').value || 0);
+      state.tasks.schematic = parseFloat(document.querySelector('[data-key="schematic"]').value || 0);
+      state.tasks.schematic_rate = parseFloat(document.querySelector('[data-key="schematic_rate"]').value || 0);
+      state.tasks.design_dev = parseFloat(document.querySelector('[data-key="design_dev"]').value || 0);
+      state.tasks.design_dev_rate = parseFloat(document.querySelector('[data-key="design_dev_rate"]').value || 0);
+      state.tasks.cds = parseFloat(document.querySelector('[data-key="cds"]').value || 0);
+      state.tasks.cds_rate = parseFloat(document.querySelector('[data-key="cds_rate"]').value || 0);
+      state.tasks.permit = parseFloat(document.querySelector('[data-key="permit"]').value || 0);
+      state.tasks.permit_rate = parseFloat(document.querySelector('[data-key="permit_rate"]').value || 0);
+      state.scope.basic_concept = parseFloat(document.getElementById('basicConcept').value || 0);
+      state.scope.design_development = parseFloat(document.getElementById('designDevelopment').value || 0);
+      state.scope.permit_drawings = parseFloat(document.getElementById('permitDrawings').value || 0);
+      state.scope.rti_support = parseFloat(document.getElementById('rtiSupport').value || 0);
+      Object.keys(state.sheet_estimate).forEach((key) => {
+        state.sheet_estimate[key].qty = parseFloat(document.querySelector('.sheet-qty[data-key="' + key + '"]').value || 0);
+        state.sheet_estimate[key].hours = parseFloat(document.querySelector('.sheet-hours[data-key="' + key + '"]').value || 0);
+        state.sheet_estimate[key].rate = parseFloat(document.querySelector('.sheet-rate[data-key="' + key + '"]').value || 0);
+      });
+      updateFeeCells();
+      updateSheetEstimateCells();
+      drawFeeChart();
+    }
+
+    function calculateHourTotal() {
+      const hours = state.tasks;
+      const builtInTotal = (hours.project_intake * hours.project_intake_rate) + (hours.as_built * hours.as_built_rate) + (hours.site_eval * hours.site_eval_rate) + (hours.schematic * hours.schematic_rate) + (hours.design_dev * hours.design_dev_rate) + (hours.cds * hours.cds_rate) + (hours.permit * hours.permit_rate);
+      const customTotal = state.custom_hourly_items.reduce((sum, item) => sum + (item.hours * item.rate), 0);
+      return builtInTotal + customTotal;
+    }
+
+    function updateFeeCells() {
+      const feeKeys = ['project_intake','as_built','site_eval','schematic','design_dev','cds','permit'];
+      const rateKeys = ['project_intake_rate','as_built_rate','site_eval_rate','schematic_rate','design_dev_rate','cds_rate','permit_rate'];
+      feeKeys.forEach((key, idx) => {
+        const hours = state.tasks[key];
+        const rate = state.tasks[rateKeys[idx]];
+        const fee = hours * rate;
+        document.querySelector('.taskFee[data-key="' + key + '"]').textContent = '$' + fee.toLocaleString();
+      });
+      document.querySelectorAll('.custom-line-row').forEach((row) => {
+        const hours = parseFloat(row.querySelector('.custom-hours').value || 0);
+        const rate = parseFloat(row.querySelector('.custom-rate').value || 0);
+        row.querySelector('.custom-fee').textContent = '$' + (hours * rate).toLocaleString();
+      });
+      document.getElementById('hourTotal').textContent = '$' + calculateHourTotal().toLocaleString();
+      document.getElementById('sfTotal').textContent = '$' + (state.sf * state.sf_rate).toLocaleString();
+      const scopeTotal = state.scope.basic_concept + state.scope.design_development + state.scope.permit_drawings + state.scope.rti_support;
+      document.getElementById('scopeTotal').textContent = '$' + scopeTotal.toLocaleString();
+      document.getElementById('sheetEstimateTotal').textContent = '$' + calculateSheetEstimateTotal().toLocaleString();
+    }
+
+    function calculateSheetEstimateTotal() {
+      return Object.values(state.sheet_estimate).reduce((sum, item) => sum + (item.qty * item.hours * item.rate), 0);
+    }
+
+    function updateSheetEstimateCells() {
+      Object.keys(state.sheet_estimate).forEach((key) => {
+        const value = (state.sheet_estimate[key].qty || 0) * (state.sheet_estimate[key].hours || 0) * (state.sheet_estimate[key].rate || 0);
+        const feeEl = document.querySelector('.sheet-fee[data-key="' + key + '"]');
+        if (feeEl) feeEl.textContent = '$' + value.toLocaleString();
+      });
+      document.getElementById('sheetEstimateTotal').textContent = '$' + calculateSheetEstimateTotal().toLocaleString();
+    }
+
+    function renderCustomLineItems() {
+      const container = document.getElementById('customHourItems');
+      container.innerHTML = '';
+      state.custom_hourly_items.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'custom-item-row custom-line-row';
+        const labelInput = document.createElement('input');
+        labelInput.className = 'custom-label';
+        labelInput.type = 'text';
+        labelInput.value = item.label || 'Additional item';
+        const hoursInput = document.createElement('input');
+        hoursInput.className = 'custom-hours';
+        hoursInput.type = 'number';
+        hoursInput.value = item.hours || 0;
+        const rateInput = document.createElement('input');
+        rateInput.className = 'custom-rate';
+        rateInput.type = 'number';
+        rateInput.value = item.rate || state.hourly_rate || 0;
+        const feeDisplay = document.createElement('div');
+        feeDisplay.className = 'custom-fee';
+        feeDisplay.textContent = '$0';
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'remove-btn';
+        removeButton.textContent = 'Remove';
+        removeButton.dataset.index = index;
+        row.appendChild(labelInput);
+        row.appendChild(hoursInput);
+        row.appendChild(rateInput);
+        row.appendChild(feeDisplay);
+        row.appendChild(removeButton);
+        container.appendChild(row);
+      });
+      updateFeeCells();
+    }
+
+    function addCustomLineItem() {
+      state.custom_hourly_items.push({ label: 'Additional item', hours: 0, rate: state.hourly_rate || 0 });
+      renderCustomLineItems();
+    }
+
+    function getHourlyBreakdownItems() {
+      const items = [];
+      const taskLabels = [
+        ['Project intake', 'project_intake', 'project_intake_rate'],
+        ['As-built / existing conditions', 'as_built', 'as_built_rate'],
+        ['Site evaluation / field verification', 'site_eval', 'site_eval_rate'],
+        ['Concept / schematic design', 'schematic', 'schematic_rate'],
+        ['Design development', 'design_dev', 'design_dev_rate'],
+        ['Construction documents / permit drawings', 'cds', 'cds_rate'],
+        ['Plan check / permitting support', 'permit', 'permit_rate']
+      ];
+      taskLabels.forEach(([label, hoursKey, rateKey]) => {
+        const hours = parseFloat(state.tasks[hoursKey] || 0);
+        const rate = parseFloat(state.tasks[rateKey] || 0);
+        const fee = hours * rate;
+        if (fee > 0) {
+          items.push({ label, value: fee });
+        }
+      });
+      state.custom_hourly_items.forEach((item) => {
+        const fee = (item.hours || 0) * (item.rate || 0);
+        if (fee > 0) {
+          items.push({ label: item.label || 'Additional item', value: fee });
+        }
+      });
+      return items;
+    }
+
+    function drawFeeChart() {
+      const canvas = document.getElementById('feeChart');
+      const ctx = canvas.getContext('2d');
+      const breakdown = getHourlyBreakdownItems();
+      const values = breakdown.map((item) => item.value);
+      const labels = breakdown.map((item) => item.label);
+      const colors = ['#0f766e', '#3b82f6', '#f59e0b', '#8b5cf6', '#ec4899', '#14b8a6', '#f97316', '#64748b'];
+      const total = values.reduce((sum, value) => sum + value, 0) || 1;
+      const legend = document.getElementById('chartLegend');
+      legend.innerHTML = '';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let startAngle = -Math.PI / 2;
+      values.forEach((value, index) => {
+        if (value <= 0) return;
+        const sliceAngle = (value / total) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(130, 130);
+        ctx.arc(130, 130, 110, startAngle, startAngle + sliceAngle);
+        ctx.closePath();
+        ctx.fillStyle = colors[index % colors.length];
+        ctx.fill();
+        startAngle += sliceAngle;
+      });
+      ctx.beginPath();
+      ctx.arc(130, 130, 110, 0, Math.PI * 2);
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      breakdown.forEach((item, index) => {
+        const legendItem = document.createElement('div');
+        legendItem.className = 'legend-item';
+        legendItem.innerHTML = '<span class="legend-swatch" style="background:' + colors[index % colors.length] + '"></span><span>' + item.label + ': $' + item.value.toLocaleString() + '</span>';
+        legend.appendChild(legendItem);
+      });
+    }
+
+    function exportToJson() {
+      updateAll();
+      const json = JSON.stringify(state, null, 2);
+      document.getElementById('jsonOutput').textContent = json;
+      return json;
+    }
+
+    function downloadJson() {
+      const json = exportToJson();
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'fee_schedule_data.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function applyImportedData(data) {
+      if (!data || typeof data !== 'object') {
+        throw new Error('The selected file does not contain a valid JSON object.');
+      }
+      if (data.project_name) document.getElementById('projectName').value = data.project_name;
+      if (data.project_type) document.getElementById('projectType').value = data.project_type;
+      if (data.hourly_rate !== undefined) document.getElementById('hourlyRate').value = data.hourly_rate;
+      if (data.sf_rate !== undefined) document.getElementById('sfRate').value = data.sf_rate;
+      if (data.sf !== undefined) document.getElementById('sf').value = data.sf;
+      if (data.manual_scope !== undefined) document.getElementById('manualScope').value = data.manual_scope;
+      if (data.custom_hourly_items) {
+        state.custom_hourly_items = data.custom_hourly_items;
+        renderCustomLineItems();
+      } else {
+        state.custom_hourly_items = [];
+        renderCustomLineItems();
+      }
+      if (data.sheet_estimate) {
+        state.sheet_estimate = { ...state.sheet_estimate, ...data.sheet_estimate };
+        Object.keys(state.sheet_estimate).forEach((key) => {
+          if (data.sheet_estimate[key]) {
+            state.sheet_estimate[key] = { ...state.sheet_estimate[key], ...data.sheet_estimate[key] };
+          }
+        });
+      }
+      if (data.tasks) {
+        const taskMap = {
+          project_intake: 'project_intake',
+          as_built: 'as_built',
+          site_eval: 'site_eval',
+          schematic: 'schematic',
+          design_dev: 'design_dev',
+          cds: 'cds',
+          permit: 'permit'
+        };
+        Object.entries(taskMap).forEach(([src, target]) => {
+          const el = document.querySelector('.taskHours[data-key="' + target + '"]');
+          if (el && data.tasks[src] !== undefined) el.value = data.tasks[src];
+        });
+        const rateMap = {
+          project_intake_rate: 'project_intake_rate',
+          as_built_rate: 'as_built_rate',
+          site_eval_rate: 'site_eval_rate',
+          schematic_rate: 'schematic_rate',
+          design_dev_rate: 'design_dev_rate',
+          cds_rate: 'cds_rate',
+          permit_rate: 'permit_rate'
+        };
+        Object.entries(rateMap).forEach(([src, target]) => {
+          const el = document.querySelector('.taskRate[data-key="' + target + '"]');
+          if (el && data.tasks[src] !== undefined) el.value = data.tasks[src];
+        });
+      }
+      if (data.scope) {
+        if (data.scope.basic_concept !== undefined) document.getElementById('basicConcept').value = data.scope.basic_concept;
+        if (data.scope.design_development !== undefined) document.getElementById('designDevelopment').value = data.scope.design_development;
+        if (data.scope.permit_drawings !== undefined) document.getElementById('permitDrawings').value = data.scope.permit_drawings;
+        if (data.scope.rti_support !== undefined) document.getElementById('rtiSupport').value = data.scope.rti_support;
+      }
+      Object.keys(state.sheet_estimate).forEach((key) => {
+        const item = state.sheet_estimate[key];
+        const qtyEl = document.querySelector('.sheet-qty[data-key="' + key + '"]');
+        const hoursEl = document.querySelector('.sheet-hours[data-key="' + key + '"]');
+        const rateEl = document.querySelector('.sheet-rate[data-key="' + key + '"]');
+        if (qtyEl) qtyEl.value = item.qty || 0;
+        if (hoursEl) hoursEl.value = item.hours || 0;
+        if (rateEl) rateEl.value = item.rate || 0;
+      });
+      updateAll();
+    }
+
+    function importFromJson() {
+      try {
+        const data = JSON.parse(document.getElementById('jsonInput').value);
+        applyImportedData(data);
+        document.getElementById('jsonOutput').textContent = 'Imported from pasted JSON.';
+      } catch (e) {
+        document.getElementById('jsonOutput').textContent = 'Invalid JSON: ' + e.message;
+      }
+    }
+
+    function importProjectIntakeFile() {
+      const input = document.getElementById('projectIntakeFile');
+      if (!input.files || !input.files[0]) {
+        document.getElementById('jsonOutput').textContent = 'Choose a JSON file first.';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        try {
+          const data = JSON.parse(event.target.result);
+          applyImportedData(data);
+          document.getElementById('jsonOutput').textContent = 'Imported from ' + input.files[0].name;
+        } catch (e) {
+          document.getElementById('jsonOutput').textContent = 'Unable to import file: ' + e.message;
+        }
+      };
+      reader.readAsText(input.files[0]);
+    }
+
+    document.addEventListener('input', updateAll);
+    document.getElementById('customHourItems').addEventListener('click', function (event) {
+      if (event.target.classList.contains('remove-btn')) {
+        const index = parseInt(event.target.dataset.index, 10);
+        state.custom_hourly_items.splice(index, 1);
+        renderCustomLineItems();
+        updateAll();
+      }
+    });
+    window.addEventListener('load', function () {
+      renderCustomLineItems();
+      updateAll();
+    });
+  </script>
+</body>
+</html>

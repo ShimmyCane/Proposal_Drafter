@@ -1,0 +1,77 @@
+{
+  "project_name": "S+Y Studio Project",
+  "project_type": "New Build / TI / Change of Use / As-Built",
+  "hourly_rate": 175,
+  "sf_rate": 5.2,
+  "sf": 1800,
+  "manual_scope": "Perform site visit, review existing conditions, prepare concept options, develop permit-ready drawings, and coordinate a single round of plan check comments.",
+  "custom_hourly_items": [
+    {
+      "label": "Client coordination",
+      "hours": 3,
+      "rate": 175
+    },
+    {
+      "label": "Revisions",
+      "hours": 2,
+      "rate": 175
+    }
+  ],
+  "tasks": {
+    "project_intake": 4,
+    "project_intake_rate": 175,
+    "project_intake_subtasks": [
+      "Review client request and project goals",
+      "Identify project type and scope",
+      "Clarify deliverables, timeline, and exclusions"
+    ],
+    "as_built": 6,
+    "as_built_rate": 175,
+    "as_built_subtasks": [
+      "Review site context and existing conditions",
+      "Prepare or review existing as-builts",
+      "Conduct field verification and initial site visit"
+    ],
+    "site_eval": 4,
+    "site_eval_rate": 175,
+    "site_eval_subtasks": [
+      "Verify dimensions and constraints in the field",
+      "Document site conditions and access issues",
+      "Plan for additional site visits if needed"
+    ],
+    "schematic": 10,
+    "schematic_rate": 175,
+    "schematic_subtasks": [
+      "Develop concept studies and massing options",
+      "Prepare schematic floor plans and elevations",
+      "Refine design direction with client feedback"
+    ],
+    "design_dev": 12,
+    "design_dev_rate": 175,
+    "design_dev_subtasks": [
+      "Develop design development drawings",
+      "Refine plans, sections, and elevations",
+      "Coordinate with consultants on key design issues"
+    ],
+    "cds": 20,
+    "cds_rate": 175,
+    "cds_subtasks": [
+      "Produce permit-ready construction documents",
+      "Prepare drawings for plan check submission",
+      "Coordinate drawing package details and schedules"
+    ],
+    "permit": 8,
+    "permit_rate": 175,
+    "permit_subtasks": [
+      "Review plan check comments and corrections",
+      "Prepare resubmittal drawings and package",
+      "Coordinate permitting support and RTI readiness"
+    ]
+  },
+  "scope": {
+    "basic_concept": 7000,
+    "design_development": 15000,
+    "permit_drawings": 22000,
+    "rti_support": 8000
+  }
+}
