@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Workspace Schematic</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 20px; }
+        p { margin: 10px 0; }
+        ul { margin-left: 20px; }
+        li { margin-bottom: 5px; }
+        .version { font-weight: bold; color: #e74c3c; margin-top: 15px; }
+        .highlight { background-color: #f8f9fa; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>AI Workspace Schematic</h1>
+    <p>This document details how to use the AI workspace skills for proposal creation.</p>
+    
+    <h2>1. `/learn`</h2>
+    <p><strong>Purpose</strong>: Review conversation history and current file to update AI notes</p>
+    <p><strong>How it works</strong>:
+        <ul>
+            <li>Scans the last 5 conversation items</li>
+            <li>Analyses the current file being worked on</li>
+            <li>Updates <code>AI_workspace/notes/initial_notes.md</code> with new insights</li>
+        </ul>
+    </p>
+    
+    <h2>2. `/new_project`</h2>
+    <p><strong>Purpose</strong>: Start a new project with template population</p>
+    <p><strong>How it works</strong>:
+        <ul>
+            <li>Creates a project folder in <code>PM/Proposal</code></li>
+            <li>Populates fee schedule (<code>fee_schedule.xlsx</code>)</li>
+            <li>Generates project timeline (<code>project_schedule.mpp</code>)</li>
+            <li>Creates draft proposal (<code>proposal.docx</code>)</li>
+        </ul>
+    </p>
+    
+    <h2>3. `/refine`</h2>
+    <p><strong>Purpose</strong>: Focus on a specific document within project context</p>
+    <p><strong>How it works</strong>:
+        <ul>
+            <li>Takes a file path from <code>PM/Proposal</code> folder</li>
+            <li>Shows the document with context of current project</li>
+            <li>Allows for targeted edits and feedback</li>
+        </ul>
+    </p>
+    
+    <div class="highlight">
+        <p><strong>Version 2.0</strong> | Updated for easier viewing and improved workflow clarity</p>
+    </div>
+</body>
+</html>
