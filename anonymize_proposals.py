@@ -5,9 +5,10 @@ path = Path(r"01_Preparation\Past Proposals\260723_Combined Proposals.htm")
 text = path.read_text(encoding="utf-8")
 
 replacements = [
-    ("Liz Robertson and Ju Rocha", "[Name] and [Name]"),
+    ("Liz Robertson", "[Name]"),
     ("Ju Rocha", "[Name]"),
     ("Robertson + Rocha Design Studio", "[Client]"),
+    ("Robertson + Rocha Design", "[Client]"),
     ("Shi Architect", "[Client]"),
     ("SHI Architect", "[Client]"),
     ("Junming Shi", "[Name]"),
@@ -42,8 +43,10 @@ for old, new in replacements:
     text = text.replace(old, new)
 
 text = re.sub(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b", "[Contact]", text)
-text = re.sub(r"\(\d{3}\)[\s-]?\d{3}[-. ]\d{4}", "[Contact]", text)
-text = re.sub(r"\b[A-Z][a-z]+\s+[A-Z][a-z]+\b", "[Name]", text)
+text = re.sub(r"\(\d{3}\)\s*\d{3}-\d{4}", "[Contact]", text)
+text = re.sub(r"\(\d{3}\)\s*\d{3}\.\d{4}", "[Contact]", text)
+text = re.sub(r"\(\d{3}\)\s*\d{3}\s*\d{4}", "[Contact]", text)
+text = text.replace('713 S Green ST, Pasadena,', '[Address], Pasadena,')
 
 path.write_text(text, encoding="utf-8")
 print(f"updated {path}")
