@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workspace Schematic</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: var(--secondary);
+            font-size: 22px;
+            margin: 15px 0 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .folder-structure {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .folder-structure pre {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: #f5f7fa;
+            border: 1px solid #e0e6ed;
+        }
+        
+        .workflow-list {
+            padding-left: 20px;
+        }
+        
+        .workflow-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .workflow-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+            line-height: 1;
+        }
+        
+        .workflow-list li strong {
+            color: var(--secondary);
+        }
+        
+        .workflow-list ul {
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        
+        .relationship-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .relationship-table th {
+            background-color: var(--light);
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .relationship-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e0e6ed;
+        }
+        
+        .relationship-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .version-update {
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 20px;
+        }
+
+        .wrapup-list {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+
+        .wrapup-list li {
+            margin-bottom: 6px;
+        }
+        
+        .version-update p {
+            font-style: italic;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .folder-structure pre {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Workspace Schematic</h1>
+        <p class="subtitle">This document shows how the AI workspace components interact to support proposal creation</p>
+    </header>
+    
+    <section>
+        <h2>Folder Structure</h2>
+        <div class="folder-structure">
+            <pre>
+AI_workspace/
+├── agents/
+│   ├── feedback_analyzer_agent.md
+│   ├── preparation_agent.md
+│   └── proposal_drafter_agent.md
+├── instructions/
+│   ├── feedback_process.md
+│   ├── new_project_workflow.md
+│   └── preparation_guide.md
+├── lessons_learned/
+│   ├── project_templates.md
+│   ├── staffing_insights.md
+│   └── time_estimates.md
+├── notes/
+│   ├── project_requirements.md
+│   └── proposal_components.md
+├── skills/
+│   └── skills.html
+├── versions/
+│   ├── template_versions.md
+│   └── version_log.md
+└── version_control/
+    ├── skills_history.md
+    └── version_log.md
+            </pre>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Workflow Integration</h2>
+        <ul class="workflow-list">
+            <li><strong>Project Initialization</strong> → <code>instructions/new_project_workflow.md</code> → Creates initial <code>notes/project_requirements.md</code></li>
+            <li><strong>Proposal Generation</strong> → 
+                <ul>
+                    <li><code>agents/proposal_drafter_agent.md</code> uses <code>versions/template_versions.md</code></li>
+                    <li><code>lessons_learned/project_templates.md</code> provides template context</li>
+                </ul>
+            </li>
+            <li><strong>Feedback Loop</strong> → 
+                <ul>
+                    <li><code>agents/feedback_analyzer_agent.md</code> processes <code>instructions/feedback_process.md</code></li>
+                    <li>Updates <code>lessons_learned/staffing_insights.md</code> and <code>lessons_learned/time_estimates.md</code></li>
+                </ul>
+            </li>
+            <li><strong>Version Tracking</strong> → 
+                <ul>
+                    <li>All changes logged in <code>version_control/version_log.md</code></li>
+                    <li>Skill updates tracked in <code>version_control/skills_history.md</code></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>Key Relationships</h2>
+        <table class="relationship-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Purpose</th>
+                    <th>Data Flow</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>lessons_learned/</td>
+                    <td>Stores project-specific insights</td>
+                    <td>→ agents/ during proposal generation</td>
+                </tr>
+                <tr>
+                    <td>version_control/</td>
+                    <td>Tracks version history and skill changes</td>
+                    <td>← versions/ and agents/</td>
+                </tr>
+                <tr>
+                    <td>notes/</td>
+                    <td>Contains project requirements and components</td>
+                    <td>→ agents/ for template population</td>
+                </tr>
+                <tr>
+                    <td>versions/</td>
+                    <td>Manages template versions and version logs</td>
+                    <td>← agents/ for new proposals</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section class="version-update">
+        <h2>Version Update</h2>
+        <p>- Updated to V1.0.3 as part of wrap_up process</p>
+        <ul class="wrapup-list">
+            <li>Reviewed changes from previous versions</li>
+            <li>Proposed simplifications where helpful</li>
+            <li>Updated notes, lessons learned, and version tracking files</li>
+            <li>Refreshed schematic and schematic view documentation</li>
+        </ul>
+    </section>
+</body>
+</html>

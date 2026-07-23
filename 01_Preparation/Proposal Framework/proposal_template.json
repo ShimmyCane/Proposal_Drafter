@@ -1,0 +1,62 @@
+{
+  "project": {
+    "client_name": "[Client Name]",
+    "project_name": "[Project Name]",
+    "address": "[Project Address]",
+    "project_type": "[New Build / Renovation / TI / ADU / Mixed Use / Permitting Support]",
+    "date": "[Date]"
+  },
+  "description": {
+    "summary": "[Brief project summary]",
+    "existing_conditions": "[Describe site/building conditions]",
+    "goals": ["[Goal 1]", "[Goal 2]"],
+    "constraints": ["[Schedule]", "[Budget]", "[Permitting]", "[Phasing]"]
+  },
+  "scope_of_work": [
+    {
+      "phase": "Phase I",
+      "name": "[Phase Name]",
+      "fee": "[Fee]",
+      "duration": "[Estimated Duration]",
+      "services": ["[Service 1]", "[Service 2]"],
+      "deliverables": ["[Deliverable 1]", "[Deliverable 2]"]
+    }
+  ],
+  "deliverables": [
+    "[Site Plan]",
+    "[Floor Plans]",
+    "[Elevations]",
+    "[Sections]",
+    "[Permit Drawings]"
+  ],
+  "fee_and_payment": {
+    "total_fee": "[Total Fee]",
+    "deposit": "[Deposit / Retainer]",
+    "payment_schedule": [
+      "[Milestone 1]",
+      "[Milestone 2]"
+    ],
+    "hourly_rate": "[Hourly Rate if applicable]",
+    "reimbursables": "[Reimbursable costs if any]"
+  },
+  "timeline": {
+    "estimated_duration": "[Overall Estimate]",
+    "milestones": [
+      "[Milestone 1]",
+      "[Milestone 2]"
+    ],
+    "notes": "[Permitting / review / coordination assumptions]"
+  },
+  "assumptions_and_exclusions": {
+    "included": ["[Included item 1]", "[Included item 2]"],
+    "excluded": ["[Excluded item 1]", "[Excluded item 2]"],
+    "client_responsibilities": ["[Responsibility 1]"],
+    "consultant_responsibilities": ["[Responsibility 1]"]
+  },
+  "general_conditions": {
+    "collaboration_method": "[Shared folder / file transfer method]",
+    "document_ownership": "[Ownership statement]",
+    "payment_terms": "[Net 30 / other]",
+    "validity_period": "[30 days / etc.]"
+  }
+}

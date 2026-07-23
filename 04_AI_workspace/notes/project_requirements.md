@@ -25,3 +25,11 @@
 - More accurate time estimates
 - Improved staffing efficiency
 - Consistent proposal quality
+
+## Wrap-up Workflow Requirements
+- Review current project status and identify changes from previous versions
+- Propose simplifications where helpful
+- Update all AI workspace files as needed
+- Update version log, lessons learned, notes, and skills log
+- Refresh schematic files and increment the version number
+- Keep outputs concise and aligned with the project structure

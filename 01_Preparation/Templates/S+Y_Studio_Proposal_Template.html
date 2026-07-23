@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S+Y Studio Proposal Template</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --bg: #f8fafc;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      margin: 0;
+      padding: 24px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 36px 40px;
+      border: 1px solid var(--line);
+    }
+
+    h1, h2, h3 {
+      color: var(--ink);
+      margin-top: 0;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--accent-soft);
+      border: 1px solid #99f6e4;
+      border-radius: 8px;
+    }
+
+    .toolbar button {
+      background: white;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .toolbar button.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    .section {
+      margin-bottom: 24px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .editable {
+      outline: none;
+      min-height: 1.4em;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+
+    .editable:focus {
+      background: #fefce8;
+      box-shadow: inset 0 0 0 1px #f59e0b;
+    }
+
+    .option-group {
+      margin-top: 12px;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+    }
+
+    .opt-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .opt-buttons button {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .opt-buttons button.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .opt-panel.hidden {
+      display: none;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95em;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    .placeholder {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .signature {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="toolbar">
+      <button type="button" onclick="showAllSections()">Show all</button>
+      <button type="button" onclick="hideAllSections()">Hide all</button>
+    </div>
+
+    <section class="section">
+      <h1 contenteditable="true">S+Y Studio Proposal Template</h1>
+      <p class="muted" contenteditable="true">Editable HTML template for architecture and design proposals. Click into any section to edit the text directly.</p>
+    </section>
+
+    <section class="section">
+      <h2>1. Cover Letter / Introduction</h2>
+      <p class="editable" contenteditable="true">[Date]</p>
+      <p class="editable" contenteditable="true">[Client Name]</p>
+      <p class="editable" contenteditable="true">[Project Address]</p>
+      <p class="editable" contenteditable="true">Dear [Client Name],</p>
+      <p class="editable" contenteditable="true">We are pleased to submit our proposal for [Project Name] at [Project Address]. This proposal outlines our proposed scope, fee, timeline, and responsibilities for the work.</p>
+      <p class="editable" contenteditable="true">We approach this project in a collaborative and transparent manner, using clear communication, modeling, and design exploration to help guide decisions from the outset.</p>
+    </section>
+
+    <section class="section">
+      <h2>2. Project Description</h2>
+      <p class="editable" contenteditable="true">Project Type: [New Build][Renovation][Tenant Improvement][ADU][Mixed Use]</p>
+      <p class="editable" contenteditable="true">Project Summary: [Describe the project, use case, and intended outcome.]</p>
+      <p class="editable" contenteditable="true">Existing Conditions: [Describe the site, building, or space as it exists today.]</p>
+      <p class="editable" contenteditable="true">Design Goals: [Describe the client priorities, program needs, and architectural intent.]</p>
+      <p class="editable" contenteditable="true">Key Constraints: [Schedule][Budget][Permitting][Phasing][Code requirements][Client decision timeline]</p>
+    </section>
+
+    <section class="section">
+      <h2>3. Scope of Work</h2>
+      <div class="option-group">
+        <div class="opt-buttons">
+          <button type="button" class="active" data-target="scope-full">Full Scope</button>
+          <button type="button" data-target="scope-design-only">Design Only</button>
+          <button type="button" data-target="scope-permitting">Permitting Support</button>
+        </div>
+
+        <div id="scope-full" class="opt-panel">
+          <h3>Full Scope Option</h3>
+          <p class="editable" contenteditable="true">Phase I – Pre-Design and Concept Development: We will review the site and project goals, prepare initial design studies, and establish the framework for the project.</p>
+          <p class="editable" contenteditable="true">Phase II – Design Development: We will develop the design, coordinate with the client and consultants as needed, and refine the project approach.</p>
+          <p class="editable" contenteditable="true">Phase III – Construction Documentation: We will prepare permit-ready drawings and documentation suitable for submission to the relevant authority.</p>
+          <p class="editable" contenteditable="true">Phase IV – Permit Support and Coordination: We will assist with coordination, submissions, and responses to plan review comments as required.</p>
+        </div>
+
+        <div id="scope-design-only" class="opt-panel hidden">
+          <h3>Design Only Option</h3>
+          <p class="editable" contenteditable="true">We will provide design services limited to concept development, design development, and preliminary construction documentation for the project.</p>
+          <p class="editable" contenteditable="true">Permit submission, plan check response, and construction administration are excluded unless separately requested.</p>
+        </div>
+
+        <div id="scope-permitting" class="opt-panel hidden">
+          <h3>Permitting Support Option</h3>
+          <p class="editable" contenteditable="true">We will prepare and revise plan check documents necessary to support permit readiness and assist with the path to RTI status.</p>
+          <p class="editable" contenteditable="true">This scope assumes that the design intent and prior drawings are available for review and adaptation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>4. Deliverables</h2>
+      <ul>
+        <li class="editable" contenteditable="true">[Site Plan][Floor Plans][Elevations][Sections]</li>
+        <li class="editable" contenteditable="true">[Reflected Ceiling Plan][Door and Window Schedule][Material Legend]</li>
+        <li class="editable" contenteditable="true">[Permit-ready drawings and supporting documentation]</li>
+        <li class="editable" contenteditable="true">[Modeling or visualization as applicable]</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>5. Fee and Payment Schedule</h2>
+      <p class="editable" contenteditable="true">The proposed fee for the scope described above is [Fee Amount], based on the anticipated effort, schedule, and level of coordination required for this project.</p>
+      <p class="editable" contenteditable="true">A deposit of [Deposit Amount] is required to begin work.</p>
+      <p class="editable" contenteditable="true">Payment milestones may include: [Deposit][Submission of drawings][Permit submission][Ready to Issue status][Completion of phase].</p>
+      <p class="editable" contenteditable="true">Additional services may be provided on an hourly basis at [Hourly Rate] per hour, as needed.</p>
+    </section>
+
+    <section class="section">
+      <h2>6. Timeline / Schedule</h2>
+      <p class="editable" contenteditable="true">The estimated duration for this work is [X–Y weeks][X–Y months], subject to client response time, consultant coordination, and jurisdiction review.</p>
+      <p class="editable" contenteditable="true">Key milestones: [Concept completion][Design development completion][Permit submission][RTI status][Construction administration start if applicable].</p>
+      <p class="editable" contenteditable="true">This schedule assumes timely review and decision-making by the client and relevant consultants.</p>
+    </section>
+
+    <section class="section">
+      <h2>7. Assumptions, Clarifications, and Exclusions</h2>
+      <p class="editable" contenteditable="true">This proposal includes [List included services].</p>
+      <p class="editable" contenteditable="true">The following services are not included unless specifically identified in this proposal: [Structural engineering][MEP engineering][Civil engineering][Landscape design][Survey][Geotechnical report][Construction administration].</p>
+      <p class="editable" contenteditable="true">Two rounds of revisions are included within the scope of this proposal. Additional revisions may be billed as additional services if they extend beyond the agreed scope.</p>
+      <p class="editable" contenteditable="true">Client responsibilities include [timely decisions][site access][consultant coordination][permit fees unless otherwise stated].</p>
+    </section>
+
+    <section class="section">
+      <h2>8. General Conditions</h2>
+      <p class="editable" contenteditable="true">We will share project documents through [Box][Google Drive][Other agreed platform] to facilitate coordination.</p>
+      <p class="editable" contenteditable="true">All drawings and design documents remain instruments of service for this project and may not be reused for other purposes without prior written authorization.</p>
+      <p class="editable" contenteditable="true">Payment is due within [30] days of invoice. A late fee of [X]% may be applied to overdue balances.</p>
+      <p class="editable" contenteditable="true">This proposal is valid for [30] days from the date of submission.</p>
+    </section>
+
+    <section class="section">
+      <h2>9. Signature Block</h2>
+      <p class="editable" contenteditable="true">Sincerely,</p>
+      <p class="editable" contenteditable="true">[Name]</p>
+      <p class="editable" contenteditable="true">[Studio Name]</p>
+      <p class="editable" contenteditable="true">[Contact Information]</p>
+    </section>
+
+    <section class="section">
+      <h2>Optional Additional Services Library</h2>
+      <p class="editable" contenteditable="true">Additional services may include: [extra design revisions][3D visualization][additional site visits][consultant coordination][design changes after approval][renderings][value engineering support].</p>
+    </section>
+  </div>
+
+  <script>
+    function showAllSections() {
+      document.querySelectorAll('.opt-panel').forEach(panel => panel.classList.remove('hidden'));
+      document.querySelectorAll('.opt-buttons button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.opt-buttons button').forEach(btn => {
+        if (btn.dataset.target === 'scope-full') btn.classList.add('active');
+      });
+    }
+
+    function hideAllSections() {
+      document.querySelectorAll('.opt-panel').forEach(panel => panel.classList.add('hidden'));
+      document.querySelectorAll('.opt-buttons button').forEach(btn => btn.classList.remove('active'));
+    }
+
+    document.querySelectorAll('.opt-buttons button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        document.querySelectorAll('.opt-panel').forEach(panel => {
+          panel.classList.toggle('hidden', panel.id !== targetId);
+        });
+        document.querySelectorAll('.opt-buttons button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

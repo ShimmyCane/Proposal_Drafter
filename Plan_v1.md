@@ -4,7 +4,7 @@ Purpose
 Steps
 A) Preparation
     1) Ingest past proposals for S+Y Studio
-    2) Create schematic of what goes into one of S+Y studio proposals
+    2) Create a framework of what goes into one of S+Y studio proposals
         - Proposal requires additional tools such as fee schedule and project timeline. 
         - These tools work together to help address various facets of a project proposal.
     3) Refine this templates, and save them for different types of projects.
