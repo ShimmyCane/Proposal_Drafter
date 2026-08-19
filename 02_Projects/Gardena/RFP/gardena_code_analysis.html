@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gardena RFP — Code Analysis</title>
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif; margin: 24px; max-width: 1000px}
+    h1,h2{color:#153243}
+    .meta input {width: 100%; padding:8px; margin:4px 0}
+    .section {border:1px solid #ddd; padding:12px; margin:12px 0; border-radius:6px}
+    .editable {min-height:48px;padding:8px;background:#fff;border:1px dashed #ccc}
+    .controls {margin:12px 0}
+    button {padding:8px 12px;margin-right:8px}
+    pre {background:#f8f8f8;padding:8px;border-radius:4px;overflow:auto}
+  </style>
+</head>
+<body>
+  <h1>Gardena RFP — Code Analysis</h1>
+  <p>Use this document to capture zoning, AHJ, code, and permitting considerations. Fields are editable inline. Export/Import JSON to save and restore state.</p>
+
+  <div class="meta section">
+    <h2>Project Metadata</h2>
+    <label>Project Name<br><input id="projectName" value="Gardena RFP"></label>
+    <label>Date Last Edited<br><input id="dateEdited" value=""></label>
+    <label>Reviewer<br><input id="reviewer" value=""></label>
+    <label>Major Concerns<br>
+      <div id="majorConcerns" class="editable" contenteditable="true">(list major concerns)</div>
+    </label>
+  </div>
+
+  <div class="section">
+    <h2>Zoning & Site Constraints</h2>
+    <label>Address<br><input id="address" value=""></label>
+    <label>Zoning (link to reference)<br><input id="zoning" value=""></label>
+    <label>Height Zone / Density<br>
+      <div id="heightDensity" class="editable" contenteditable="true">(height / density notes)</div>
+    </label>
+    <label>Climate / Flood / Seismic / Fire / Other<br>
+      <div id="siteConstraints" class="editable" contenteditable="true">(flood zone, climate zone, earthquake, liquefaction, methane, fire risk)</div>
+    </label>
+  </div>
+
+  <div class="section">
+    <h2>Program Info</h2>
+    <div id="programInfo" class="editable" contenteditable="true">(type: permit / consultation; program mix; affordable units; bicycle parking; trash; open space)</div>
+  </div>
+
+  <div class="section">
+    <h2>Building Info</h2>
+    <div id="buildingInfo" class="editable" contenteditable="true">(new/alteration; occupancy; construction type; area; stories; sprinklers Y/N; setbacks)</div>
+  </div>
+
+  <div class="section">
+    <h2>Detailed Code Analysis</h2>
+    <div id="detailedCode" class="editable" contenteditable="true">(CBC chapters, egress, accessibility, energy / CalGreen, NFPA, local amendments)</div>
+  </div>
+
+  <div class="section">
+    <h2>Research AHJ & Permitting</h2>
+    <div id="ahj" class="editable" contenteditable="true">(jurisdiction portals, fire dept, health, OSHPD, OSFM, DSA; plan-check portal links)</div>
+  </div>
+
+  <div class="section">
+    <h2>Reports / Consultants</h2>
+    <div id="consultants" class="editable" contenteditable="true">(geotech, survey, arborist, hazmat, traffic, structural, MEP, energy)</div>
+  </div>
+
+  <div class="section">
+    <h2>Workflow, Deliverables & Milestones</h2>
+    <div id="deliverables" class="editable" contenteditable="true">(30%/60%/90% sets, plan-check submittals, inspections, entitlements needed)</div>
+  </div>
+
+  <div class="section">
+    <h2>Fees, Contingencies & Risks</h2>
+    <div id="fees" class="editable" contenteditable="true">(estimated permit fees, consultant fees, contingencies, major risks)</div>
+  </div>
+
+  <div class="controls">
+    <button id="exportBtn">Export JSON</button>
+    <button id="importBtn">Import JSON</button>
+    <button id="clearBtn">Clear Content</button>
+    <input type="file" id="fileIn" style="display:none" accept="application/json">
+  </div>
+
+  <h3>Exported JSON (copy/paste or save)</h3>
+  <pre id="jsonOut">(no export yet)</pre>
+
+  <script>
+    // Structured gather: produces a stable schema that can be imported/exported across projects
+    function gather() {
+      var meta = {
+        projectName: document.getElementById('projectName').value,
+        dateEdited: document.getElementById('dateEdited').value,
+        reviewer: document.getElementById('reviewer').value,
+        majorConcerns: document.getElementById('majorConcerns').innerText
+      };
+
+      var sections = {
+        zoning: {
+          address: document.getElementById('address').value,
+          zoningReference: document.getElementById('zoning').value,
+          heightDensity: document.getElementById('heightDensity').innerText,
+          siteConstraints: document.getElementById('siteConstraints').innerText
+        },
+        programInfo: document.getElementById('programInfo').innerText,
+        buildingInfo: document.getElementById('buildingInfo').innerText,
+        detailedCode: document.getElementById('detailedCode').innerText,
+        ahj: document.getElementById('ahj').innerText,
+        consultants: document.getElementById('consultants').innerText,
+        deliverables: document.getElementById('deliverables').innerText,
+        fees: document.getElementById('fees').innerText
+      };
+
+      return {
+        schemaVersion: '1.0',
+        source: 'gardena_code_analysis.html',
+        project: meta,
+        sections: sections,
+        applicableCodes: [
+          'California Residential Code (CRC) - refer to current edition',
+          'California Building Code (CBC) - refer to current edition',
+          'CALGreen - energy and sustainability requirements',
+          'Local amendments (check Gardena municipal code)'
+        ],
+        exportedAt: new Date().toISOString()
+      };
+    }
+
+    function applyStructured(obj){
+      if(!obj) return;
+      if(obj.project){
+        if(obj.project.projectName) document.getElementById('projectName').value = obj.project.projectName;
+        if(obj.project.dateEdited) document.getElementById('dateEdited').value = obj.project.dateEdited;
+        if(obj.project.reviewer) document.getElementById('reviewer').value = obj.project.reviewer;
+        if(obj.project.majorConcerns) document.getElementById('majorConcerns').innerText = obj.project.majorConcerns;
+      }
+      if(obj.sections){
+        var s = obj.sections;
+        if(s.zoning){
+          if(s.zoning.address) document.getElementById('address').value = s.zoning.address;
+          if(s.zoning.zoningReference) document.getElementById('zoning').value = s.zoning.zoningReference;
+          if(s.zoning.heightDensity) document.getElementById('heightDensity').innerText = s.zoning.heightDensity;
+          if(s.zoning.siteConstraints) document.getElementById('siteConstraints').innerText = s.zoning.siteConstraints;
+        }
+        if(s.programInfo) document.getElementById('programInfo').innerText = s.programInfo;
+        if(s.buildingInfo) document.getElementById('buildingInfo').innerText = s.buildingInfo;
+        if(s.detailedCode) document.getElementById('detailedCode').innerText = s.detailedCode;
+        if(s.ahj) document.getElementById('ahj').innerText = s.ahj;
+        if(s.consultants) document.getElementById('consultants').innerText = s.consultants;
+        if(s.deliverables) document.getElementById('deliverables').innerText = s.deliverables;
+        if(s.fees) document.getElementById('fees').innerText = s.fees;
+      }
+      // show full object
+      document.getElementById('jsonOut').innerText = JSON.stringify(obj, null, 2);
+    }
+
+    document.getElementById('exportBtn').addEventListener('click', function(){
+      var data = gather();
+      var s = JSON.stringify(data, null, 2);
+      document.getElementById('jsonOut').innerText = s;
+      // trigger download
+      var blob = new Blob([s], {type: 'application/json'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      var fn = (data.project && data.project.projectName ? data.project.projectName : 'code_analysis');
+      a.href = url; a.download = fn + '_v' + data.schemaVersion + '.json';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('importBtn').addEventListener('click', function(){
+      document.getElementById('fileIn').click();
+    });
+
+    document.getElementById('fileIn').addEventListener('change', function(e){
+      var f = e.target.files[0];
+      if(!f) return;
+      var r = new FileReader();
+      r.onload = function(ev){
+        try {
+          var obj = JSON.parse(ev.target.result);
+          // if structured schema, apply; if legacy flat, convert and apply
+          if(obj.schemaVersion && obj.sections){
+            applyStructured(obj);
+          } else {
+            // legacy fallback mapping
+            var mapped = {
+              schemaVersion: 'legacy-0.1',
+              source: 'legacy-import',
+              project: {
+                projectName: obj.projectName || obj.projectName || document.getElementById('projectName').value,
+                dateEdited: obj.dateEdited || '',
+                reviewer: obj.reviewer || '',
+                majorConcerns: obj.majorConcerns || ''
+              },
+              sections: {
+                zoning: {
+                  address: obj.address || '',
+                  zoningReference: obj.zoning || '',
+                  heightDensity: obj.heightDensity || '',
+                  siteConstraints: obj.siteConstraints || ''
+                },
+                programInfo: obj.programInfo || '',
+                buildingInfo: obj.buildingInfo || '',
+                detailedCode: obj.detailedCode || '',
+                ahj: obj.ahj || '',
+                consultants: obj.consultants || '',
+                deliverables: obj.deliverables || '',
+                fees: obj.fees || ''
+              }
+            };
+            applyStructured(mapped);
+          }
+        } catch(err) {
+          alert('Invalid JSON file');
+        }
+      };
+      r.readAsText(f);
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', function(){
+      if(!confirm('Clear all editable fields?')) return;
+      var divs = document.querySelectorAll('.editable');
+      divs.forEach(function(d){d.innerText='';});
+      document.getElementById('jsonOut').innerText='(no export yet)';
+    });
+
+    // set dateEdited default
+    document.getElementById('dateEdited').value = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>

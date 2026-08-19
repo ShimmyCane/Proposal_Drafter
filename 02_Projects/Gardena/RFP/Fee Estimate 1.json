@@ -1,0 +1,73 @@
+{
+  "project_name": "Gardena — CRC Duplexes (12 units)",
+  "project_type": "New Build — For-sale duplexes (CRC)",
+  "hourly_rate": 175,
+  "sf_rate": 5.2,
+  "sf": 24000,
+  "manual_scope": "Project: ~12 for-sale residential units (CRC duplex buildings). Scope: Limited architectural coordination, permit-ready architectural working drawings for plan check, and City plan-check coordination. Assumptions: Client or client-contracted structural/MEP/civil consultants will provide consultant drawings; planning pathway to be confirmed (ministerial vs discretionary). Discovery recommended to firm scope and fees.",
+  "custom_hourly_items": [],
+  "sheet_estimate": {
+    "site_plan": {
+      "qty": 1,
+      "hours": 4,
+      "rate": 175
+    },
+    "floor_plans": {
+      "qty": 2,
+      "hours": 5,
+      "rate": 175
+    },
+    "elevations": {
+      "qty": 2,
+      "hours": 4,
+      "rate": 175
+    },
+    "sections": {
+      "qty": 2,
+      "hours": 8,
+      "rate": 175
+    },
+    "reflected_ceiling": {
+      "qty": 2,
+      "hours": 4,
+      "rate": 175
+    },
+    "interior_elevations": {
+      "qty": 2,
+      "hours": 8,
+      "rate": 175
+    },
+    "details": {
+      "qty": 6,
+      "hours": 2,
+      "rate": 175
+    },
+    "schedules": {
+      "qty": 1,
+      "hours": 2,
+      "rate": 175
+    }
+  },
+  "tasks": {
+    "project_intake": 6,
+    "project_intake_rate": 175,
+    "as_built": 0,
+    "as_built_rate": 175,
+    "site_eval": 4,
+    "site_eval_rate": 175,
+    "schematic": 12,
+    "schematic_rate": 175,
+    "design_dev": 30,
+    "design_dev_rate": 175,
+    "cds": 60,
+    "cds_rate": 175,
+    "permit": 24,
+    "permit_rate": 175
+  },
+  "scope": {
+    "basic_concept": 7500,
+    "design_development": 15000,
+    "permit_drawings": 25000,
+    "rti_support": 6000
+  }
+}

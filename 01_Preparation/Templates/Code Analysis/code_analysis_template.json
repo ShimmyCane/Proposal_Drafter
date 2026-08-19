@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "source": "code_analysis_template",
+  "project": {
+    "projectName": "",
+    "dateEdited": "",
+    "reviewer": "",
+    "majorConcerns": ""
+  },
+  "sections": {
+    "zoning": {
+      "address": "",
+      "zoningReference": "",
+      "heightDensity": "",
+      "siteConstraints": ""
+    },
+    "programInfo": "",
+    "buildingInfo": "",
+    "detailedCode": "",
+    "ahj": "",
+    "consultants": "",
+    "deliverables": "",
+    "fees": ""
+  },
+  "applicableCodes": [],
+  "researchNotes": {
+    "clientContact": {
+      "name": "",
+      "organization": "",
+      "phone": "",
+      "notes": ""
+    },
+    "rfqHighlights": "",
+    "nextSteps": []
+  },
+  "exportedAt": ""
+}

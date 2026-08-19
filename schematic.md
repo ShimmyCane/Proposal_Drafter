@@ -1,5 +1,7 @@
 # Proposal Drafter Schematic
 
+Schematic version: V1.0.1
+
 ## Overview
 
 This folder is the working system for organizing proposal preparation, project analysis, and studio knowledge.
@@ -55,6 +57,7 @@ It can contain:
 
 1. Start with a new project in 02_Projects.
 2. Use 01_Preparation files to analyze the project scope and build a proposal logic.
+- 2A Basic code analysis, use skill and template. 
 3. Draft the proposal using the framework and template files.
 4. Save project-specific documents in the relevant project folder.
 5. Use 03_Feedback to capture lessons learned and improve future proposals.
