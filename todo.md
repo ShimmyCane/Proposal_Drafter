@@ -1,11 +1,12 @@
-# TODO
+# TODO — S+Y Studio Proposal Drafter
 
-## Proposal workflow expansion (v1.02)
+## Proposal Workflow & Streamlining (v1.03)
 
-- [ ] Review the current repository structure and confirm the v1.02 workflow updates
-- [ ] Formalize a standard project intake structure under 02_Projects
-- [ ] Define reusable preparation and analysis templates for new opportunities
-- [ ] Clarify the AI workspace structure for versioning, notes, and lessons learned
-- [ ] Standardize the feedback loop in 03_Feedback for future proposal improvement
-- [ ] Update schematic and related documentation to reflect the expanded workflow
-- [ ] Validate the workflow against one sample project or proposal scenario
+- [x] Review repository structure and eliminate redundant/misspelled directories (`01_Preparation/Worfklow` cleaned)
+- [x] Create comprehensive AI File Tree Manifest and Operational Index (`04_AI_workspace/file_tree_manifest.md`)
+- [x] Establish human-readable feedback loop in `03_Feedback/` (lessons learned summary, template refinements log, Gardena post-mortem)
+- [x] Create 5 modular project archetype templates in Markdown with `[Choice A][Choice B]` options
+- [x] Create standardized master project schedule and timeline template
+- [x] Formalize `ai_new_draft_proposal` skill with 20-question intake questionnaire in `Skills.md`
+- [x] Update agent instructions and SOP in `04_AI_workspace/`
+- [ ] Test `ai_new_draft_proposal` end-to-end on a new test project opportunity
