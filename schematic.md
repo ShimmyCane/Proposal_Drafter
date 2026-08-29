@@ -1,10 +1,19 @@
 # Proposal Drafter Schematic
 
-Schematic version: V1.0.1
+Schematic version: V1.02
 
 ## Overview
 
 This folder is the working system for organizing proposal preparation, project analysis, and studio knowledge.
+
+## Repository review update (V1.02)
+
+The current repository structure reflects a more complete proposal workflow than the original draft. Key updates reviewed in this version include:
+
+- Expanded preparation materials under 01_Preparation, including proposal framework, templates, workflows, and a reusable code-analysis structure.
+- New project intake examples under 02_Projects, including the Gardena project set with RFQ/RFP materials, fee schedule, schedule, proposal drafts, and supporting references.
+- Added AI operational support under 04_AI_workspace for versioning, notes, lessons learned, instructions, and agent guidance.
+- Established a repeatable versioning pattern with schema and documentation updates to support future proposal iterations.
 
 ## Main folders and purpose
 

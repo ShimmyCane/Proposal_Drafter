@@ -1,6 +1,9 @@
 Purpose
 - Help me create architectural proposals for my entity.
 
+Tracking
+- V1.02 - update 8/29/26
+
 Steps
 A) Preparation
     1) Ingest past proposals for S+Y Studio

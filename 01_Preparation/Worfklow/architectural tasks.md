@@ -2,7 +2,11 @@
 
 ## Purpose
 
-This file captures the architectural subtasks reflected across past projects. It is intended to help break future projects into clear scope items, forecast effort, and later inform a proposal consideration framework.
+This file captures the architectural subtasks reflected across past projects. It is intended to help break future projects into clear scope items, forecast effort, and identify what belongs in the base fee versus the additional-services list.
+
+The Gardena example underscores the need to treat limited permit-set work differently from a broad design proposal.
+
+Before writing any proposal, prompt the user to identify the project path: full design, permit-led, planning support, or hybrid. Do not assume the default scope.
 
 ---
 
@@ -10,8 +14,8 @@ This file captures the architectural subtasks reflected across past projects. It
 
 ### A. Project intake and scoping
 - Review client request and project goals
-- Identify project type: new build, renovation, TI, ADU, mixed-use, change of use, permitting support
-- Clarify scope, deliverables, and expected timeline
+- Identify project type: small-lot subdivision, permit set, new build, renovation, TI, ADU, mixed-use, change of use, planning support
+- Clarify scope, deliverables, and prioritized timeline
 - Determine whether the project is design-led, permit-led, or both
 
 ### B. Existing conditions and site evaluation
@@ -22,13 +26,13 @@ This file captures the architectural subtasks reflected across past projects. It
 - Schedule and complete initial site visit
 - Plan for additional site visits if scope requires it
 
-### C. Design development
+### C. Design development and coordination
 - Develop conceptual design studies
-- Create massing, site, and programme options
+- Create massing, site, and program options
 - Prepare schematic plans
 - Develop design development drawings
 - Refine plans based on client feedback and consultant input
-- Develop materials, elevations, sections, and design intent
+- Confirm mirrored or repeated unit assumptions where relevant
 
 ### D. Documentation and drawing production
 - Create architectural construction documents
@@ -62,79 +66,79 @@ This file captures the architectural subtasks reflected across past projects. It
 - Prepare renderings or visualization if requested
 - Support value engineering or design changes after approval
 - Provide additional site visits or expanded coordination
+- Incorporate deferred submittal items or plan revisions beyond the base package
 
 ---
 
 ## 2. Subtasks by project type
 
-### A. As-built / existing conditions projects
-These types of projects usually begin with understanding what already exists.
+### A. Small-lot subdivision / duplex / permit-set projects
+These projects often involve a specific permit package rather than a broad design engagement.
 
+Typical subtasks:
+- Review project assumptions and parcel logic
+- Confirm planning or subdivision path
+- Prepare site and zoning analysis
+- Coordinate with civil and planning consultants as needed
+- Produce a builder's permit set or simplified construction drawing package
+- Respond to plan check comments and facilitate RTI
+
+Typical exclusions:
+- Fire sprinkler design beyond deferred submittal assumptions
+- Structural and MEP engineering unless specifically included
+- Plotting and reproduction charges
+- Full construction administration
+- Additional redesign beyond the agreed scope
+
+### B. As-built / existing conditions projects
 Typical subtasks:
 - Review existing conditions and site context
 - Create or review as-builts of the existing building or site
 - Conduct site evaluation and field verification
 - Prepare base drawings from existing conditions
-- Create a simple model or diagrammatic representation if needed
-- Perform a second site visit if required for verification
 - Develop conceptual plans based on the existing condition
 
 Typical exclusions:
-- Structural engineering and stamped structural drawings
-- MEP engineering and stamped MEP drawings
+- Structural engineering and stamped drawings
+- MEP engineering and stamped drawings
 - Civil, landscape, or irrigation design
-- Survey or geotechnical report unless separately provided
-- Full construction administration services
+- Survey or geotechnical reports unless separately provided
+- Full construction administration
 
-### B. Change of use projects
-These projects require a stronger code and occupancy logic.
-
+### C. Change of use projects
 Typical subtasks:
 - Create as-builts of existing conditions
 - Provide code analysis for the change of use
-- Identify required architectural scope for the occupancy change
-- Review path of travel, life safety, and occupancy-related requirements
-- Determine whether planning, building, fire, or other approvals are involved
-- Prepare architectural permit drawings for the change of use
-- Coordinate with consultants where required
-- Respond to plan check comments and obtain approvals
+- Review occupancy, path-of-travel, and life-safety issues
+- Prepare architectural permit drawings
+- Coordinate with consultants and respond to comments
 
 Typical exclusions:
-- Detailed TI drawings beyond the scope of the change of use permit
 - Full consultant package unless separately identified
 - Structural, MEP, civil, and landscape work unless specifically included
 
-### C. Tenant improvement projects
-These projects often start from an existing interior condition or a provided TI plan.
-
+### D. Tenant improvement projects
 Typical subtasks:
 - Review provided TI plans or sketch drawings
 - Verify dimensions and conditions in the field
 - Prepare permit-ready TI documents
-- Develop architectural plans for the tenant improvement scope
-- Coordinate with kitchen consultant, owner, or other relevant consultants
-- Prepare plan check submission drawings
-- Respond to plan check comments and revise drawings
+- Coordinate with client, kitchen consultant, or owner decisions
+- Prepare plan check submission drawings and revisions
 
 Typical exclusions:
 - Extensive site visits unless required by the scope
 - Structural and MEP engineering unless included
-- Civil, landscape, or irrigation design
 - Construction administration unless separately included
 
-### D. New build / addition / ADU projects
-These projects usually include more full-cycle design and documentation work.
-
+### E. New build / addition / ADU projects
 Typical subtasks:
 - Conduct site analysis and massing studies
 - Develop schematic design options
 - Prepare conceptual design drawings
 - Develop design development drawings
-- Coordinate with consultants during design development
+- Coordinate with consultants
 - Prepare construction documents for permitting
-- Submit to plan check and respond to comments
-- Obtain RTI status
-- Provide modeling or simple visualization if included
+- Respond to plan check comments and obtain RTI status
 
 Typical exclusions:
 - Structural and MEP engineering unless explicitly included
@@ -142,16 +146,13 @@ Typical exclusions:
 - Survey or geotechnical report
 - Permit fees unless stated otherwise
 
-### E. Permitting / RTI / resubmission projects
-These projects focus on making an existing design package permit-ready.
-
+### F. Permitting / RTI / resubmission projects
 Typical subtasks:
 - Review prior plan check comments and existing drawings
 - Prepare corrected permit drawings for resubmittal
 - Coordinate with consultants and client to close comments
 - Update drawings for RTI status
-- Prepare submission package for the relevant authority
-- Track permitting timeline and possible revision rounds
+- Prepare submission package for relevant authority
 
 Typical exclusions:
 - Full redesign unless specifically requested
@@ -172,9 +173,9 @@ Typical exclusions:
 - Door and window schedule
 - Room schedule and material legend
 - Permit-ready drawings
+- Planning or entitlement package if applicable
 - Plan check submission package
 - RTI package
-- IFC package
 - Modeling or visualization if included
 
 ---
@@ -191,6 +192,7 @@ These exclusions appeared repeatedly across projects:
 - Construction administration unless explicitly included
 - Permit fees unless otherwise stated
 - Additional services beyond the agreed scope
+- Deferred submittal or build-design packages not included in the base scope
 
 ---
 
@@ -198,8 +200,8 @@ These exclusions appeared repeatedly across projects:
 
 Before drafting a proposal, ask:
 
-- Is this a new design project, an existing-condition project, or a permit-support project?
-- Is the project based on existing drawings, a sketch, or a new concept?
+- Is this a permit-set project, a planning-support project, a design project, or a combination?
+- Is the project based on existing drawings, mirrored plans, a sketch, or a new concept?
 - Does the project require as-builts or field verification?
 - Will a site visit be needed, and how many?
 - Does the project involve a change of use, occupancy issue, or code analysis?
@@ -208,13 +210,36 @@ Before drafting a proposal, ask:
 - Is the deliverable concept design, permit drawings, RTI, or IFC?
 - What is excluded from the base scope so the client understands the boundary clearly?
 
+### Starter block: small-lot subdivision / duplex permit package
+- Project path: [Permit-led / limited service]
+- Project type: [Small-lot subdivision / duplex / permit set]
+- Base scope: [site and zoning review, permit drawings, agency coordination, RTI support]
+- Exclusions: [structural, MEP, civil, landscape, plotting, construction admin, deferred submittals unless specified]
+- Pricing: [fixed fee + milestone billing]
+
+### AI comparison checklist
+- [ ] The project path matches the actual client request.
+- [ ] The proposal is not assuming broad design scope when the client asked for a limited permit package.
+- [ ] The fee aligns with the actual deliverables, assumptions, and milestone structure.
+- [ ] Consultant responsibilities are clearly separated from owner responsibilities.
+- [ ] Exclusions and deferred submittals align with the real project conditions.
+- [ ] The language has been compared to the client-authored narrative before finalization.
+
 ---
 
 ## 6. Suggested use for future proposal work
 
-This document can be used as the first layer of a future proposal consideration framework. It helps identify:
+This document can be used to identify:
 
 - the architectural subtasks required for a project,
 - the likely scope boundaries,
 - the tasks that should be priced,
 - and the tasks that should be treated as additional services.
+
+For limited-service projects, it is especially important to distinguish between:
+- design process work,
+- permit package work,
+- agency coordination,
+- consultant dependency management,
+- and deferred or optional add-on services.
+
