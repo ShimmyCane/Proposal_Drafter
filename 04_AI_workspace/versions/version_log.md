@@ -15,11 +15,12 @@ Track all versions and iterations of templates, agents, and processes.
 - Mark as draft, review, or approved
 
 ## Current Status
-Version tracking system initialized and updated for wrap_up workflow.
+Version tracking updated through V1.03 (2026-10-23). Note: the 2026-07-23 rows use a different numbering (V1.0.2, V1.0.3); see Claude/observations_2026-10-23.md.
 
 ## Recent Updates
 | Date | Component | Version | Changes | Status |
 |------|-----------|---------|---------|--------|
+| 2026-10-23 | Proposal Drafter Repository Review and Cleanup | V1.03 | Full file review; delinked Windows links; corrected manifest and schematic; refreshed status fields; added Claude/ observation folder; refined todo | Active |
 | 2026-08-29 | Proposal Drafter Repository Review | V1.02 | Reviewed repo structure, confirmed expanded preparation and project assets, refreshed schematic versioning, and documented the current architecture | Active |
 | 2026-07-23 | AI Workspace Schematics | V1.0.3 | Updated wrap_up workflow, refreshed schematic files, and aligned notes/version tracking | Active |
 | 2026-07-23 | Proposal Framework Docs | V1.0.2 | Added proposal flowchart and preparation notes | Active |

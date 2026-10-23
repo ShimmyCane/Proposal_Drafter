@@ -1,6 +1,6 @@
 # Proposal Drafter Schematic
 
-Schematic version: V1.02
+Schematic version: V1.03
 
 ## Overview
 
@@ -59,6 +59,18 @@ It can contain:
 - notes from project analysis
 - lessons learned
 - version history
+
+---
+
+## Update (V1.03, 2026-10-23)
+
+- Full repository review logged in `Claude/observations_2026-10-23.md`.
+- Absolute Windows links removed from `Skills.md` and `03_Feedback/lessons_learned_summary.md`.
+- File tree manifest, AI workspace schematic, version log, and stale status fields refreshed.
+- Added `Claude/` as the AI observation folder for review findings.
+
+### Claude
+AI observation log for repository reviews. Start with `Claude/README.md`.
 
 ---
 
