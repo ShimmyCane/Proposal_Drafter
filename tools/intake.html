@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Intake</title>
+  <link rel="stylesheet" href="../assets/shared.css">
+</head>
+<body>
+  <header class="site">
+    <a href="../index.html">← Proposal tools</a>
+  </header>
+
+  <main>
+    <div id="gate"></div>
+
+    <div id="app" hidden>
+      <h1>Project intake</h1>
+      <p>Answer the 20 scoping questions for a project. Skip any you don't know yet; you can come back to them.</p>
+
+      <label>
+        <span>Project</span>
+        <select id="picker"></select>
+      </label>
+
+      <form id="intake">
+        <fieldset>
+          <legend>Project record</legend>
+          <label><span>Project name *</span><input name="name" required></label>
+          <label><span>Archetype</span>
+            <select name="archetype">
+              <option value="">Not decided</option>
+              <option value="01_permit_led">Permit-led builder's set</option>
+              <option value="02_full_design">Full architectural design</option>
+              <option value="03_tenant_improvement">Tenant improvement / remodel</option>
+              <option value="04_planning_entitlement">Planning & entitlement support</option>
+              <option value="05_asbuilt_feasibility">As-built & feasibility / code</option>
+            </select>
+          </label>
+          <label><span>Jurisdiction</span><input name="jurisdiction"></label>
+          <label><span>Site address</span><input name="site_address"></label>
+          <label><span>APN</span><input name="apn"></label>
+        </fieldset>
+
+        <div id="questions"></div>
+
+        <div class="actions">
+          <button type="submit">Save project</button>
+          <p class="status" id="status" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script type="module">
+    import { db, requireSignIn, esc } from '../assets/shared.js';
+
+    const SECTIONS = [
+      { title: 'Client & project basics', from: 1, to: 4 },
+      { title: 'Archetype & design path', from: 5, to: 8 },
+      { title: 'Planning & permitting path', from: 9, to: 12 },
+      { title: 'Consultant scope & exclusions', from: 13, to: 16 },
+      { title: 'Fee model, milestones & timeline', from: 17, to: 20 },
+    ];
+
+    const QUESTIONS = [
+      'Who is the Client / Owner entity and primary contact person?',
+      'What is the exact site address / APN and municipal jurisdiction?',
+      'What is the total lot size (SF/Acres) and existing building size (if applicable)?',
+      'What is the primary project goal (e.g. 12-unit duplex subdivision, custom residence, retail TI)?',
+      'Which project archetype best fits this work? (Permit-Led Builder\'s Set / Full Design / TI / Entitlement / As-Built)',
+      'Are floor plans new from scratch, or based on mirrored/repeated unit prototypes?',
+      'Are interior layouts and finishes selected by the Architect or owner/builder?',
+      'Is a concept or test-fit already provided by others?',
+      'What is the planning/zoning pathway (Ministerial SB 684/SB 1123, Site Plan Review, Tract Map, CUP, or By-Right)?',
+      'Which municipal agencies have plan check jurisdiction (e.g. City Building & Safety, County Fire, Health Dept)?',
+      'Is a preliminary site/zoning code analysis memo required as a separate deliverable?',
+      'How many plan check backcheck revision cycles should be included (standard: 2)?',
+      'Which consultants will the Owner contract directly? (Civil, Structural, MEP, Landscape, Survey, Geotech)',
+      'Are fire sprinkler drawings to be excluded as a Design-Build / Deferred Submittal?',
+      'Is Construction Administration (CA) included, or excluded and offered as an hourly add-on?',
+      'Are plotting and reimbursable expenses billed separately at cost?',
+      'What is the target fee model (Fixed Fee with Milestones, Hourly, or Fee/SF)?',
+      'What is the proposed total fee amount and retainer deposit (standard: 5%–15%)?',
+      'What are the key milestone payment triggers (e.g. Deposit -> Planning Submittal -> Plan Check -> RTI)?',
+      'What is the target completion timeline and urgency?',
+    ];
+
+    const gate = document.querySelector('#gate');
+    const app = document.querySelector('#app');
+    const picker = document.querySelector('#picker');
+    const form = document.querySelector('#intake');
+    const status = document.querySelector('#status');
+
+    const PROJECT_FIELDS = ['name', 'archetype', 'jurisdiction', 'site_address', 'apn'];
+
+    function setStatus(message, isError = false) {
+      status.textContent = message;
+      status.classList.toggle('error', isError);
+    }
+
+    function renderQuestions() {
+      document.querySelector('#questions').innerHTML = SECTIONS.map((section) => `
+        <fieldset>
+          <legend>${esc(section.title)}</legend>
+          ${QUESTIONS.slice(section.from - 1, section.to).map((text, i) => {
+            const no = section.from + i;
+            return `<label><span>${no}. ${esc(text)}</span>
+              <textarea name="q${no}" rows="2"></textarea></label>`;
+          }).join('')}
+        </fieldset>`).join('');
+    }
+
+    function clearForm() {
+      form.reset();
+      delete form.dataset.projectId;
+      setStatus('');
+    }
+
+    async function refreshPicker(selectedId = '') {
+      const { data, error } = await db.from('projects')
+        .select('id, name')
+        .order('created_at', { ascending: false });
+      if (error) return setStatus(error.message, true);
+
+      picker.innerHTML = '<option value="">+ New project</option>' + data
+        .map((p) => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+      picker.value = selectedId;
+    }
+
+    async function loadProject(id) {
+      const [projectResult, answersResult] = await Promise.all([
+        db.from('projects').select('*').eq('id', id).single(),
+        db.from('intake_answers').select('question_no, answer').eq('project_id', id),
+      ]);
+      const error = projectResult.error || answersResult.error;
+      if (error) return setStatus(error.message, true);
+
+      clearForm();
+      for (const field of PROJECT_FIELDS) {
+        form.elements[field].value = projectResult.data[field] ?? '';
+      }
+      for (const row of answersResult.data) {
+        form.elements[`q${row.question_no}`].value = row.answer ?? '';
+      }
+      form.dataset.projectId = id;
+      setStatus('Loaded.');
+    }
+
+    picker.addEventListener('change', () => {
+      if (picker.value) loadProject(picker.value);
+      else clearForm();
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const f = form.elements;
+      const now = new Date().toISOString();
+
+      const projectFields = {
+        name: f.name.value.trim(),
+        archetype: f.archetype.value || null,
+        jurisdiction: f.jurisdiction.value.trim() || null,
+        site_address: f.site_address.value.trim() || null,
+        apn: f.apn.value.trim() || null,
+        updated_at: now,
+      };
+      if (!projectFields.name) return setStatus('Project name is required.', true);
+
+      setStatus('Saving…');
+
+      let projectId = form.dataset.projectId;
+      if (projectId) {
+        const { error } = await db.from('projects').update(projectFields).eq('id', projectId);
+        if (error) return setStatus(error.message, true);
+      } else {
+        const { data, error } = await db.from('projects').insert(projectFields).select('id').single();
+        if (error) return setStatus(error.message, true);
+        projectId = data.id;
+      }
+
+      const rows = QUESTIONS.map((_, i) => ({
+        project_id: projectId,
+        question_no: i + 1,
+        answer: f[`q${i + 1}`].value.trim() || null,
+        updated_at: now,
+      }));
+      const { error } = await db.from('intake_answers').upsert(rows, { onConflict: 'project_id,question_no' });
+      if (error) return setStatus(error.message, true);
+
+      form.dataset.projectId = projectId;
+      await refreshPicker(projectId);
+      setStatus('Saved.');
+    });
+
+    renderQuestions();
+    await requireSignIn(gate);
+    gate.hidden = true;
+    app.hidden = false;
+    await refreshPicker();
+  </script>
+</body>
+</html>
