@@ -16,4 +16,4 @@ Build the foundation for proposal templates by analyzing past work and creating 
 - Export formats ready for implementation
 
 ## Status
-Not yet started
+In progress (updated 2026-10-23). Done: proposal framework, five archetype templates, fee and schedule templates, past proposals file. Open: component schematic (`notes/proposal_components.md`), HTML/JSON `[choice]` export, and tagging past proposals for reuse.

@@ -16,4 +16,4 @@ Learn from past projects to improve future estimates and costs.
 - Staffing efficiency
 
 ## Status
-Pending lessons learned data collection
+Started (updated 2026-10-23). Done: Gardena post-mortem and studio lessons summary. Open: actual hours per task, staffing and calendar data, cost calibration.

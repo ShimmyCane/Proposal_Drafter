@@ -47,7 +47,7 @@ This document is the human-readable repository of studio insights, fee benchmark
 
 | File / Folder | Purpose |
 | :--- | :--- |
-| [`03_Feedback/lessons_learned_summary.md`](file:///c:/Users/shiju/Desktop/SynologyDrive/SynologyDrive/S+Y%20Studio/Proposal_Drafter/03_Feedback/lessons_learned_summary.md) | This master document (studio guidelines & rules). |
-| [`03_Feedback/template_refinements.md`](file:///c:/Users/shiju/Desktop/SynologyDrive/SynologyDrive/S+Y%20Studio/Proposal_Drafter/03_Feedback/template_refinements.md) | Audit trail of how feedback directly modified proposal templates. |
-| [`03_Feedback/project_postmortems/`](file:///c:/Users/shiju/Desktop/SynologyDrive/SynologyDrive/S+Y%20Studio/Proposal_Drafter/03_Feedback/project_postmortems/) | In-depth case studies comparing initial drafts vs. final executed contracts. |
+| [`03_Feedback/lessons_learned_summary.md`](03_Feedback/lessons_learned_summary.md) | This master document (studio guidelines & rules). |
+| [`03_Feedback/template_refinements.md`](03_Feedback/template_refinements.md) | Audit trail of how feedback directly modified proposal templates. |
+| [`03_Feedback/project_postmortems/`](03_Feedback/project_postmortems/) | In-depth case studies comparing initial drafts vs. final executed contracts. |
 

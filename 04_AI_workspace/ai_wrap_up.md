@@ -17,8 +17,8 @@ Files created or modified in this wrap-up:
 - Created: `02_Projects/Gardena/RFP/gardena_code_analysis.html`
 - Created: `04_AI_workspace/ai_wrap_up.md` (this file)
 - Created: `04_AI_workspace/versions/V1.0.1.md`
-- Edited: `c:\Users\shiju\Desktop\SynologyDrive\SynologyDrive\S+Y Studio\Proposal_Drafter\Skills.md` (formalized ai_wrap_up)
-- Edited: `c:\Users\shiju\Desktop\SynologyDrive\SynologyDrive\S+Y Studio\Proposal_Drafter\schematic.md` (added version and bumped to V1.0.1)
+- Edited: `Skills.md` (formalized ai_wrap_up)
+- Edited: `schematic.md` (added version and bumped to V1.0.1)
 
 Notes & rationale:
 

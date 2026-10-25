@@ -21,4 +21,4 @@ Key components that make up an S+Y Studio proposal.
 - Multiple template versions for different project types
 
 ## Status
-To be populated during Step A (Preparation)
+Partially populated (updated 2026-10-23). Archetype templates exist; the HTML/JSON `[choice]` export is not built yet.

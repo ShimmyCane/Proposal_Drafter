@@ -19,5 +19,5 @@ This document tracks how feedback, project post-mortems, and client interactions
 * **Source**: S+Y Studio Identity (`00_S+Y profile/studio identity.md`)
 * **Observation**: Standardizing the revision boundary to 2 included rounds prevents scope creep, while keeping an hourly rate ($150–$175/hr) for additional iterations.
 * **Template Updates Applied**:
-  - Embedded standard Box document-sharing clause, single-use license terms, and 30-day proposal validity across all 5 markdown templates.
+  - Embedded standard Box document-sharing clause, single-use license terms, and 30-day proposal validity across the markdown templates. *Correction (2026-10-23): on review, the Box clause is only in `01_Preparation/Templates/Proposal_Templates/01_permit_led_builder_set.md`; the 30-day validity clause appears in 01, 02 and a short note in 03; 04 and 05 have no validity clause.*
 

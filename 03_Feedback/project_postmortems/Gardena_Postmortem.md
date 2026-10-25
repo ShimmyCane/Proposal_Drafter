@@ -21,7 +21,7 @@ The client sought limited architectural services to produce a builder's permit s
 | **Planning Scope** | Vague zoning research | Specific: Tentative Tract Map coordination with Civil, Site Plan Review for Gardena Planning |
 | **Plan Check Scope** | Generic "Permit Filing" | Specific: Gardena Building & Safety + LA County Fire Prevention Plan Checks through to RTI |
 | **Exclusions** | Open-ended | Explicit: Structural, MEP, Civil, Landscape, Fire Sprinklers (deferred), Soils/Hydrant tests, CA, Plotting |
-| **Fee Structure** | Hourly range | **Fixed $65,000 Milestone Fee**: Deposit ($5k) $\rightarrow$ Site Plan Submittal ($15k) $\rightarrow$ Plan Check Submittal ($30k) $\rightarrow$ RTI ($15k) |
+| **Fee Structure** | Hourly range | **Fixed $65,000 Milestone Fee**: Deposit ($5k) → Site Plan Submittal ($15k) → Plan Check Submittal ($30k) → RTI ($15k) |
 | **Additional Services** | Unspecified | Stated clearly at **$150/hr** |
 
 ---
