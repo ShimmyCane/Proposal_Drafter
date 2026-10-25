@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S+Y Studio Proposal Tools</title>
+  <meta name="description" content="Tools for building S+Y Studio architectural proposals.">
+  <link rel="stylesheet" href="assets/shared.css">
+</head>
+<body>
+  <header class="site">
+    <a href="index.html">S+Y Studio · Proposal Tools</a>
+    <button type="button" class="secondary" id="sign-out" hidden>Sign out</button>
+  </header>
+
+  <main>
+    <h1>Proposal tools</h1>
+    <p>Work through each tool in order. Everything you enter is saved to the Architecture database.</p>
+
+    <ul class="card-list">
+      <li><a href="tools/intake.html">1. Project intake<small>20-question scoping interview and project record</small></a></li>
+      <li class="card">2. Fee schedule<small>Coming next</small></li>
+      <li class="card">3. Project schedule<small>Coming next</small></li>
+      <li class="card">4. Proposal draft<small>Coming next</small></li>
+      <li class="card">5. Lessons learned<small>Coming next</small></li>
+    </ul>
+  </main>
+
+  <script type="module">
+    import { db } from './assets/shared.js';
+
+    const signOut = document.querySelector('#sign-out');
+    const { data } = await db.auth.getSession();
+    if (data.session) {
+      signOut.hidden = false;
+      signOut.addEventListener('click', async () => {
+        await db.auth.signOut();
+        location.reload();
+      });
+    }
+  </script>
+</body>
+</html>
