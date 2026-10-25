@@ -16,11 +16,20 @@ export function esc(value) {
   ));
 }
 
+// Supabase puts failed link sign-ins in the URL hash, e.g. #error_code=otp_expired.
+const urlAuthError = new URLSearchParams(location.hash.slice(1)).get('error_code');
+
+const AUTH_ERROR_MESSAGES = {
+  otp_expired: 'That sign-in link has expired or was already used. Send a new link below and open it once.',
+};
+
 // Resolves with the owner's session. Until then it shows a magic-link form inside `container`.
 export async function requireSignIn(container) {
   const { data } = await db.auth.getSession();
   if (data.session && data.session.user.email === OWNER_EMAIL) return data.session;
   if (data.session) await db.auth.signOut();
+
+  if (urlAuthError) history.replaceState(null, '', location.pathname + location.search);
 
   return new Promise((resolve) => {
     const { data: { subscription } } = db.auth.onAuthStateChange((_event, session) => {
@@ -41,6 +50,9 @@ export async function requireSignIn(container) {
       </form>`;
 
     const form = container.querySelector('form');
+    if (urlAuthError) {
+      form.querySelector('.status').textContent = AUTH_ERROR_MESSAGES[urlAuthError] ?? 'Sign-in failed. Send a new link below.';
+    }
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const status = form.querySelector('.status');
